@@ -135,9 +135,15 @@ class Game extends React.Component {
     let status;
     let winningMoves;
 
+    let checkIfNull = (squareValue) => squareValue !== null;
+
+    let gameOver = current.squares.every(checkIfNull);
+
     if (winner) {
       status = "Winner: " + winner[0];
       winningMoves = winner[1];
+    } else if (gameOver) {
+      status = "Draw!";
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? "X" : "O");
     }
